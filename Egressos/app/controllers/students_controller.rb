@@ -5,6 +5,7 @@ class StudentsController < ApplicationController
   # GET /students.json
   def index
     @students = Student.all
+    @courses = Course.all
   end
 
   # GET /students/1
@@ -14,12 +15,13 @@ class StudentsController < ApplicationController
 
   # GET /students/new
   def new
-    @student = Student.new
+    @student = Student.new    
     @courses = Course.all
   end
 
   # GET /students/1/edit
-  def edit
+  def edit    
+    @courses = Course.all
   end
 
   # POST /students
@@ -70,6 +72,7 @@ class StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:nome, :matricula, :ano, :semestre, :senha, :homologado, :course_id)
+      params.require(:student).permit(:nome, :matricula, :ano, :semestre, :senha, 
+        :homologado, :course_id, contacts_attributes: [:id, :tipo, :valor, :_destroy])
     end
 end

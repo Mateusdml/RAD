@@ -5,16 +5,19 @@ class CoursesController < ApplicationController
   # GET /courses.json
   def index
     @courses = Course.all
+    @coordinator = Coordinator.all
   end
 
   # GET /courses/1
   # GET /courses/1.json
-  def show
+  def show    
+    @coordinator = Coordinator.all
   end
 
   # GET /courses/new
   def new
     @course = Course.new
+    @course.build_coordinator
   end
 
   # GET /courses/1/edit
@@ -69,6 +72,6 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:nome, :sigla, :site)
+      params.require(:course).permit(:nome, :sigla, :site, coordinator_attributes:[:id, :nome, :matricula, :senha])
     end
 end

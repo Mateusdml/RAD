@@ -26,6 +26,27 @@
     <%= form.text_field :site %>
   </div>
 
+  <h3>Dados do Coordenador</h3>
+
+  <%= form.fields_for :coordinator do |coordinator_field| %>
+
+    <div class="field">
+      <%= coordinator_field.label :nome %>
+      <%= coordinator_field.text_field :nome %>
+    </div>
+
+    <div class="field">
+      <%= coordinator_field.label :matricula %>
+      <%= coordinator_field.text_field :matricula %>
+    </div>
+
+    <div class="field">
+      <%= coordinator_field.label :senha %>
+      <%= coordinator_field.text_field :senha %>
+    </div>
+    
+  <% end %>
+
   <div class="actions">
     <%= form.submit %>
   </div>

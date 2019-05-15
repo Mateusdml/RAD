@@ -15,5 +15,17 @@
   <%= @course.site %>
 </p>
 
+<p>
+  <strong>Coordenador:</strong>
+  <%= @course.coordinator.nome %>
+</p>
+
+<p>
+  <strong>Matricula:</strong>
+  <%= @course.coordinator.matricula %>
+</p>
+
+
+
 <%= link_to 'Edit', edit_course_path(@course) %> |
 <%= link_to 'Back', courses_path %>

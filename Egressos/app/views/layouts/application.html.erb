@@ -10,7 +10,8 @@
   </head>
 
   <body>
-    <%= render partial: "/layouts/menu" %>
+    <% nome_app = "Egressos" %>
+    <%= render partial: "/layouts/menu", locals: {p1:nome_app}%>
     <%= yield %>
   </body>
 </html>

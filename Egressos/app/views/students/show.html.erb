@@ -25,14 +25,14 @@
   <%= @student.senha %>
 </p>
 
-<p>
+<!-- <p>
   <strong>Homologado:</strong>
   <%= @student.homologado %>
 </p>
-
+ -->
 <p>
   <strong>Course:</strong>
-  <%= @student.course %>
+  <%= @student.course.nome %>
 </p>
 
 <%= link_to 'Edit', edit_student_path(@student) %> |

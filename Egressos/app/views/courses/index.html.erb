@@ -2,12 +2,14 @@
 
 <h1>Courses</h1>
 
-<table class="table">
-  <thead class="thead-dark">
+<table>
+  <thead>
     <tr>
       <th>Nome</th>
       <th>Sigla</th>
       <th>Site</th>
+      <th>Coordenador</th>
+      <th>Matrícula</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,6 +20,8 @@
         <td><%= course.nome %></td>
         <td><%= course.sigla %></td>
         <td><%= course.site %></td>
+        <td><%= course.coordinator.nome %></td>
+        <td><%= course.coordinator.matricula %></td>
         <td><%= link_to 'Show', course %></td>
         <td><%= link_to 'Edit', edit_course_path(course) %></td>
         <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
