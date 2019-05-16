@@ -15,6 +15,9 @@ class AnswersController < ApplicationController
   # GET /answers/new
   def new
     @answer = Answer.new
+    @answer.build_user
+    @survey = Survey.find(params[:survey])
+    @alternatives = Alternative.where(survey_id: @survey.id)
   end
 
   # GET /answers/1/edit
@@ -69,7 +72,6 @@ class AnswersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def answer_params
-      params.require(:answer).permit(:alternativa, :observacao, :survey_id, 
-                      user_attributes: [:id, :nome, :email]))
+      params.require(:answer).permit(:alternativa, :observacao, :survey_id, user_attributes: [:id, :nome, :email])
     end
 end

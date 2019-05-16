@@ -16,6 +16,14 @@
     <%= form.text_field :descricao %>
   </div>
 
+  <div id="alternatives">
+    <%=form.fields_for :alternatives do |alternatives_fields| %>
+      <%= render partial: "alternative_fields", locals: {f: alternatives_fields} %>
+    <% end %>
+
+    <%= link_to_add_association('[Adicionar Alternativa]', form, :alternatives) %>
+  </div> 
+
   <div class="actions">
     <%= form.submit %>
   </div>

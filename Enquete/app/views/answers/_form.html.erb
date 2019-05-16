@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :alternativa %>
-    <%= form.number_field :alternativa %>
+    <%= collection_radio_buttons(:answer, :alternativa, @alternatives, :id, :descricao) %>
   </div>
 
   <div class="field">
@@ -22,9 +22,21 @@
   </div>
 
   <div class="field">
-    <%= form.label :survey_id %>
-    <%= form.text_field :survey_id %>
-  </div>
+    <%= form.hidden_field :survey_id, value: survey.id %>
+  </div> 
+
+  <%= form.fields_for :user do |user_fields| %>
+    <div class="field">
+      <%= user_fields.label :nome %>
+      <%= user_fields.text_field :nome %>
+    </div>    
+    
+    <div class="field">
+      <%= user_fields.label :email %>
+      <%= user_fields.text_field :email %>
+    </div>
+
+  <% end %>
 
   <div class="actions">
     <%= form.submit %>

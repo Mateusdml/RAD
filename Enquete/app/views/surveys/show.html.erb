@@ -1,9 +1,52 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Descricao:</strong>
-  <%= @survey.descricao %>
-</p>
+	<p>
+	  	<strong>Enquete:</strong><br>
+		  
+		  <%= @survey.descricao %>
+		
+		<hr>
 
+	  	<h6>Alternativas:</h6>
+	
+		<% @alternatives.each do |alternative| %>
+		
+		  <lu>
+		    <li><%= alternative.descricao %></li>
+		  </lu>
+
+		<% end %>
+
+		<hr>
+
+	  	<h6>Respostas:</h6>
+	
+		<% @answers.each do |answer| %>
+		
+		  <lu>
+		    <strong>Alternativa:</strong>
+  			<%= answer.alternativa %>
+		  </lu>
+		  <br>
+		  <lu>
+  			<strong>Observacao:</strong>
+  			<%= answer.observacao %>
+		  </lu>
+		  <br>
+		  <lu>
+		    <strong>Usuário:</strong>
+  			<%= answer.user.nome %>
+		  </lu>
+		  <lu>
+		   	<strong>Email:</strong>
+  			<%= answer.user.email %>
+		  </lu>
+		  <br>
+		  <br>
+		<% end %>
+
+	</p>
+<%= link_to 'New Answer', new_answer_path(survey: @survey) %>
+<br>
 <%= link_to 'Edit', edit_survey_path(@survey) %> |
 <%= link_to 'Back', surveys_path %>

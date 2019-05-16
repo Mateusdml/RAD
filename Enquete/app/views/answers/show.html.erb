@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Enquete:</strong>
+  <%= @answer.survey.descricao %>
+</p>
+
+<p>
   <strong>Alternativa:</strong>
   <%= @answer.alternativa %>
 </p>
@@ -11,9 +16,14 @@
 </p>
 
 <p>
-  <strong>Survey:</strong>
-  <%= @answer.survey %>
+  <strong>Usuário:</strong>
+  <%= @answer.user.nome %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @answer.user.email %>
 </p>
 
 <%= link_to 'Edit', edit_answer_path(@answer) %> |
-<%= link_to 'Back', answers_path %>
+<%= link_to 'Back', survey_path(@answer.survey)%>

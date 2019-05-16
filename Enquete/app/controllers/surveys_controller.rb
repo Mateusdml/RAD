@@ -5,11 +5,15 @@ class SurveysController < ApplicationController
   # GET /surveys.json
   def index
     @surveys = Survey.all
+    @alternatives = Alternative.all
+    @answers = Answer.all
   end
 
   # GET /surveys/1
   # GET /surveys/1.json
   def show
+    @alternatives = Alternative.where(survey_id: @survey.id)
+    @answers = Answer.where(survey_id: @survey.id)
   end
 
   # GET /surveys/new
@@ -69,6 +73,6 @@ class SurveysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def survey_params
-      params.require(:survey).permit(:descricao)
+      params.require(:survey).permit(:descricao, alternatives_attributes: [:id, :descricao, :_destroy])
     end
 end
